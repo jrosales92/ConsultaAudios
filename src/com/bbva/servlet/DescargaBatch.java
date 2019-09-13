@@ -26,17 +26,18 @@ public class DescargaBatch extends HttpServlet{
 	public void doGet(HttpServletRequest request, HttpServletResponse response){
 		BufferedWriter bw = null;
 		JSONObject json = null;
+		File file = null;
 		StringBuffer xml = new StringBuffer();
 		String pathTemporal = getServletContext().getRealPath("/") + File.separator + "upload" + File.separator;
 		String cds_aplicacion = request.getParameter("cds");
 		String nbs_aplicacion = request.getParameter("nbs");
-		
+		System.out.println(pathTemporal);
 		String[] cds = cds_aplicacion.split("\\|");
 		String[] nbs = nbs_aplicacion.split("\\|");
 		
-		File file = new File("C:/Users/GESFOR-676/Documents/Verint Archivos/monitor_audios_Batch.txt");
 		
 		try {
+			file = new File(pathTemporal + "monitor_audios_Batch.txt");
 			if (!file.exists()) {
 				file.createNewFile();
 			}

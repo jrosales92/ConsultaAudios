@@ -17,68 +17,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
 <style type="text/css">
-body{
-background: rgba(226,226,226,1);
+body{background: rgba(226,226,226,1);}
+.button {padding-left: 90px;}
+button {margin-left: .5em;}
 
-}
-.button {
-    /* Para posicionar los botones a la misma posición que los campos de texto */
-    padding-left: 90px; /* mismo tamaño a todos los elementos label */
-}
-button {
-    /* Este margen extra representa aproximadamente el mismo espacio que el espacio
-       entre los labels y sus campos de texto */
-    margin-left: .5em;
-}
+input:focus, textarea:focus {border-color: #000;}
 
-input:focus, textarea:focus {
-    /* Para dar un pequeño destaque en elementos activos*/
-    border-color: #000;
-}
+input, textarea {font: 1em sans-serif;width: 300px; -moz-box-sizing: border-box;box-sizing: border-box;border: 2px solid #999;}
 
-input, textarea {
-    /* Para asegurarse de que todos los campos de texto tienen las mismas propiedades de fuente
-       Por defecto, las areas de texto tienen una fuente con monospace */
-    font: 1em sans-serif;
+label {display: inline-block;width: 90px;text-align: right;}
 
-    /* Para darle el mismo tamaño a todos los campos de texto */
-    width: 300px;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+form div + div {margin-top: 1em;}
 
-    /* Para armonizar el look&feel del borde en los campos de texto */
-    border: 2px solid #999;
-}
+form {margin: 0 auto;width: 400px;padding: 1em;border: 3px solid #CCC;border-radius: 1em;}
 
-label {
-    /* Para asegurarse que todos los labels tienen el mismo tamaño y están alineados correctamente */
-    display: inline-block;
-    width: 90px;
-    text-align: right;
-}
-
-form div + div {
-    margin-top: 1em;
-}
-
-form {
-    /* Sólo para centrar el formulario a la página */
-    margin: 0 auto;
-    width: 400px;
-    /* Para ver el borde del formulario */
-    padding: 1em;
-    border: 3px solid #CCC;
-    border-radius: 1em;
-}
 </style>
 
 </head>
 <script type="text/javascript">
 function Consulta(){
-	var numeroCliente = document.getElementById("numeroCliente").value;
-	var numeroContrato = document.getElementById("numeroContrato").value;
-	document.forms['form1'].action = "./jsp/ConsultaAudios.jsp?numcliente=" + numeroCliente + "&numeroContrato=" + numeroContrato;
-	document.forms['form1'].submit();
+	var selectbucket = document.getElementById("selectbucket").value;
+	if(selectbucket != -1){
+		var numeroCliente = document.getElementById("numeroCliente").value;
+		var numeroContrato = document.getElementById("numeroContrato").value;
+		document.forms['form1'].action = "./jsp/ConsultaAudios.jsp?numcliente=" + numeroCliente + "&numeroContrato=" + numeroContrato + "&bucket=" + selectbucket;
+		document.forms['form1'].submit();
+	}else{
+		alert("Selecciona un bucket");
+	}
 }
 </script>
 
@@ -105,6 +71,12 @@ function Consulta(){
 <!-- 	</form> -->
 
 <form id="form1" action="" method="post">
+	<select id="selectbucket">
+		<option value="-1">Selecciona un bucket..</option>
+		<option value="expunic">expunic</option>
+		<option value="verint">verint</option>
+		<option value="bucketfroy">bucketfroy</option>
+	</select>
     <div>
         <label for="name">Numero Cliente:</label>
         <input type="text" id="numeroCliente" name="numcliente" />

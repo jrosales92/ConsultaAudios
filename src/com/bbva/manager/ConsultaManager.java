@@ -5,14 +5,63 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import com.bbva.bean.EjempoConsulta;
-import com.bbva.bean.TATN001_APLICACION;
 import com.bbva.datasource.DataSourceManager;
 
 public class ConsultaManager extends DataSourceManager {
+	
+	public String[][] getDefinicionBucket(String aplicacion){
+		String[][] data = new String[0][0];
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		PreparedStatement pstmt2 = null;
+		ResultSet rs = null;
+		ResultSet rs2 = null;
+		int totalRegistros = 0;
+		try {
+			conn = getConnection();
+			String query = "select count(nb_parametro) as nbparam FROM GORAPR.tatn008_paramconf where tx_valorparam = ?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, aplicacion.toUpperCase());
+
+			rs = pstmt.executeQuery();
+			if (rs.next()) 
+				totalRegistros = rs.getInt(1);
+
+			data = new String[totalRegistros][3];
+
+			String query2 = "select nb_parametro, tx_valorparam, tp_parametro FROM GORAPR.tatn008_paramconf where tx_valorparam = ?";
+			pstmt2 = conn.prepareStatement(query2);
+			pstmt2.setString(1, aplicacion.toUpperCase());
+
+			rs2 = pstmt2.executeQuery();
+			for (int row = 0; row < totalRegistros; row++) {
+				rs2.next();
+				for (int i = 0; i < rs2.getMetaData().getColumnCount() - 1; i++) {
+					String valor = (rs2.getString(i + 2) == null ? ""
+							: ("null".equalsIgnoreCase(rs2.getString(i + 2).trim()) ? ""
+									: rs2.getString(i + 2).trim()));
+					data[row][i] = (i == 0) ? rs2.getString("nb_parametro") : valor;
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(rs2 != null) rs2.close();
+				if(pstmt2 != null) pstmt2.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return data;
+	}
 
 	public List<EjempoConsulta> EjempoConsultaNumCliente(String numcliente) {
 

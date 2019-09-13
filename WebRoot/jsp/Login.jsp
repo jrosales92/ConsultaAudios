@@ -73,7 +73,9 @@ input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgb
 	function IrAudios() {
 		var user = document.getElementById("user").value;
 		var password = document.getElementById("password").value;
-		document.forms['form1'].action = "./jsp/Audios.jsp?user=" + user + "&password=" + password;
+		var aplicacion = "expunic";
+		//document.forms['form1'].action = "./jsp/Audios.jsp?user=" + user + "&password=" + password;
+		document.forms['form1'].action = "./DefinitionBucket?user=" + user + "&password=" + password + "&aplicacion=" + aplicacion;
 		document.forms['form1'].submit();
 	}
 </script>

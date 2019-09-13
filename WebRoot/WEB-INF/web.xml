@@ -9,25 +9,45 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  	<context-param>
-		<param-name>javax.servlet.jsp.jstl.sql.dataSource</param-name>
-		<param-value>jdbc/AUDIOS</param-value>
-	</context-param>
+  <context-param>
+    <param-name>javax.servlet.jsp.jstl.sql.dataSource</param-name>
+    <param-value>jdbc/AUDIOS</param-value>
+  </context-param>
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>DescargaBatch</servlet-name>
     <servlet-class>com.bbva.servlet.DescargaBatch</servlet-class>
   </servlet>
-
   <servlet-mapping>
     <servlet-name>DescargaBatch</servlet-name>
     <url-pattern>/DescargaBatch</url-pattern>
   </servlet-mapping>
-	<resource-ref>
-		<res-ref-name>jdbc/AUDIOS</res-ref-name>
-		<res-type>javax.sql.DataSource</res-type>
-		<res-auth>Container</res-auth>
-		<res-sharing-scope>Shareable</res-sharing-scope>
-	</resource-ref>
+  <resource-ref>
+    <res-ref-name>jdbc/AUDIOS</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
+    <res-sharing-scope>Shareable</res-sharing-scope>
+  </resource-ref>
+  <servlet>
+    <description></description>
+    <display-name>DefinitionBucket</display-name>
+    <servlet-name>DefinitionBucket</servlet-name>
+    <servlet-class>com.bbva.servlet.DefinitionBucket</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ConsultaAudios</servlet-name>
+    <servlet-class>com.bbva.servlet.ConsultaAudios</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>DefinitionBucket</servlet-name>
+    <url-pattern>/DefinitionBucket</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ConsultaAudios</servlet-name>
+    <url-pattern>/servlet/ConsultaAudios</url-pattern>
+  </servlet-mapping>
 </web-app>
