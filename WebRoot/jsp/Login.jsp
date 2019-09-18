@@ -75,14 +75,12 @@ input:focus { }
 		var password = document.getElementById("password").value;
 		var aplicacion = "expunic";
 		document.forms['form1'].action = "./jsp/Principal.jsp?user=" + user + "&password=" + password + "&aplicacion=" + aplicacion;
-// 		document.forms['form1'].action = "./jsp/SearchAudios.jsp?user=" + user + "&password=" + password + "&aplicacion=" + aplicacion;
-// 		document.forms['form1'].action = "./DefinitionBucket?user=" + user + "&password=" + password + "&aplicacion=" + aplicacion;
 		document.forms['form1'].submit();
 	}
 	
 </script>
 <body>
-<img top= 200px, width= 1450px, height= 485px src="./Imagenes/Img1.jpg" > 
+<img top= 200px, width= 1450px, height= 485px src="./imagenes/logo.jpg" > 
 	<div class="login">
 	    <h1>BBVA</h1>
 	    <form id="form1" method="post">

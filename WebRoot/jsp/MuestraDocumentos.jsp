@@ -1,31 +1,18 @@
+<%@page import="com.bbva.manager.ConsultaManager"%>
 <%@ page language="java" pageEncoding="ISO-8859-1"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 
-String tituloAplicacion =request.getParameter("selectbucket")==null? "":(String)request.getParameter("selectbucket");
+String bucket =request.getParameter("selectbucket")==null? "":(String)request.getParameter("selectbucket");
 
-String numCliente	= null;
-String nomCliente	= null;
-// String tipoBusqueda = null;
-// String fechaInicio	= null;
-// String fechaFin		= null;
-
-// String descripcion = null;
-// String folio 	   = null;
-
-// String tituloAplicacion =request.getParameter("tituloAplicacion")==null? "":(String)request.getParameter("tituloAplicacion");
-// if("expunico".equalsIgnoreCase(tituloAplicacion)){
-	numCliente		= request.getParameter("nc")==null? "":(String)request.getParameter("nc");
-	nomCliente		= request.getParameter("ct")==null? "":(String)request.getParameter("ct");
-// }else if("asec".equalsIgnoreCase(tituloAplicacion)){
-// 	descripcion		= request.getParameter("descripcion")==null?" ":(String)request.getParameter("descripcion");
-// }else if("finauto".equalsIgnoreCase(tituloAplicacion)){
-// 	folio		= request.getParameter("folio")==null?" ":(String)request.getParameter("folio");
-// }
-// tipoBusqueda 	= request.getParameter("metododB")==null?" ":(String)request.getParameter("metododB");
-// fechaInicio 	= request.getParameter("fromH")==null?" ":(String)request.getParameter("fromH");
-// fechaFin 		= request.getParameter("toH")==null?" ":(String)request.getParameter("toH");
+ConsultaManager cm = new ConsultaManager();
+String[][] data = cm.getDefinicionBucket(bucket);
+StringBuilder params = new StringBuilder();
+for(int i=0; i< data.length; i++){
+	params.append(""+data[i][0]+"="+ (request.getParameter(data[i][0])==null? "":(String)request.getParameter(data[i][0]))+"&");
+}
+System.out.println("Mis parametros son: " +params);
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -136,7 +123,8 @@ var ajax, jx;// global instance of XMLHttpRequest
 // 		soloesperarGeneral();
 		numPagina++;
 		createXmlHttpRequest();
-		var uu="../ResultDocuments?bucket=<%=tituloAplicacion%>&nc=<%=numCliente%>&ct=<%=nomCliente%>";
+			var uu="../ResultDocuments?bucket=<%=bucket%>&<%=params%>";
+<%-- 		var uu="../ResultDocuments?bucket=<%=bucket%>&nc=<%=numCliente%>&ct=<%=nomCliente%>"; --%>
 <%-- 		var uu="../vistaHistorico?tituloAplicacion=<%=tituloAplicacion%>&numCliente=<%=numCliente%>&nomCliente=<%=nomCliente%>&descripcion=<%=descripcion%>&folio=<%=folio%>&numPagina="+numPagina+"&from=<%=fechaInicio%>&to=<%=fechaFin%>&metodo=<%=tipoBusqueda%>&rand="+Math.random(); --%>
 		ajax.open("GET",uu,true);
 		ajax.onreadystatechange=consulta;
@@ -280,15 +268,12 @@ var ajax, jx;// global instance of XMLHttpRequest
 		var nbs = "";
 		var nombre = "";
 		var total = document.getElementById("totalArch").value;
-// 		alert(total);
-// 		alert(document.getElementById("cdAplicacion1").value);
 		for(i = 0; i < total; i++){
 			if(document.getElementById("check" + i).checked){
 				cds  = cds + document.getElementById("cdAplicacion" + i).value + "|";
 				nbs  = nbs + document.getElementById("nbAplicacion" + i).value + "|";
 			}
 		}
-// 		alert("aqui vengo " + cds + "  " + nbs)
 		if(cds != "" && nbs != ""){
 			location.href = "../DescargaBatch?cds=" + cds + "&nbs=" + nbs;
 		}
@@ -309,10 +294,19 @@ var ajax, jx;// global instance of XMLHttpRequest
 <div id="interno"> 
  	<table id="tablaDocEncabeza"  cellpadding="0" cellspacing="0" border="0" >  
  	  <thead>	
- 		<tr height="35px">	
+ 		<tr height="35px">
 			<th id="titVista0" >&nbsp;Registro</th>
-			<th id="titVista1" >&nbsp;Numero de Cliente;</th>
-			<th id="titVista2" >&nbsp;Contrato&nbsp;</th>			
+ 		<%
+ 		for(int i=0; i< data.length; i++){
+ 			if(!"t".equalsIgnoreCase(data[i][0])){
+		%>
+			<th id="titVista1">&nbsp;<%=data[i][1]%></th>
+		<%
+			}
+		}
+ 		%>
+<!-- 			<th id="titVista1" >&nbsp;Numero de Cliente;</th> -->
+<!-- 			<th id="titVista2" >&nbsp;Contrato&nbsp;</th>			 -->
 		</tr>
  	  </thead>		
    </table>

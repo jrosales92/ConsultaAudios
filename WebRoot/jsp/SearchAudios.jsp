@@ -4,10 +4,10 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 
-String aplicacion = request.getParameter("aplicacion");
+String bucket = request.getParameter("bucket");
 
 ConsultaManager cm = new ConsultaManager();
-String[][] data = cm.getDefinicionBucket(aplicacion);
+String[][] data = cm.getDefinicionBucket(bucket);
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -40,19 +40,8 @@ String[][] data = cm.getDefinicionBucket(aplicacion);
 </head>
 <script type="text/javascript">
 function Consulta(){
-// 		var selectbucket = document.getElementById("selectbucket").value;
-// 		if(selectbucket != -1){
-// 		var res = "";
-// 		var parametros = document.getElementById("params").value;
-
-// 		document.forms['form1'].action = "../jsp/ConsultaAudios.jsp?"+res+ "&bucket=" + selectbucket;
-// 		document.forms['form1'].submit();
-// 		}else{
-// 		alert("Selecciona un bucket");
-// 		}
-
 	var selectbucket = document.getElementById("selectbucket").value;
-	if(selectbucket != -1){
+	if(selectbucket != 0){
 		var res = "";
 		var parametros = document.getElementById("params").value;
 		document.forms[0].submit();
@@ -61,13 +50,21 @@ function Consulta(){
 	}
 }
 
+function alCambiarBucket(){
+	var selectbucket = document.getElementById("selectbucket").value;
+	window.location.href = "./jsp/SearchAudios.jsp?bucket="+selectbucket+"";
+}
 
+function alCargar(){
+	var optcon = document.getElementById("selectbucket").value = "<%=bucket%>";
+	optcon.focus();
+}
 </script>
 
-<body>
+<body onload="alCargar();">
 	<form action="./jsp/MuestraDocumentos.jsp" method="post" id="buscar" target="frameResultados">
-		<select style="font:bold; width: 146px;" id="selectbucket" name="selectbucket" class="enabled" >
-			<option value="-1">Selecciona un bucket..</option>
+		<select style="font:bold; width: 146px;" id="selectbucket" name="selectbucket" class="enabled" onchange="alCambiarBucket();">
+			<option value="0">Selecciona un bucket..</option>
 			<option value="expunic">expunic</option>
 			<option value="verint">verint</option>
 			<option value="bucketfroy">bucketfroy</option>
