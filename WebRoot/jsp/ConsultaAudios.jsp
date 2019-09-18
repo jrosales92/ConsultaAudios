@@ -91,7 +91,6 @@ function Generar(){
 
 <body>
 <div style="color: black;">
-	<h1>Selecciona los audios:</h1>
 	<form id="form1" action="" method="POST">
 		<table border="1">
 			<tr>

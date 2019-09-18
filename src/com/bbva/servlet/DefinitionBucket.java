@@ -46,7 +46,8 @@ public class DefinitionBucket extends HttpServlet {
 		
 		out.println("<html>");
 		out.println("<head>");
-		out.println("<title>My JSP 'ConsultaAudios.jsp' starting page</title>");
+		out.println("<title>Monitor</title>");
+		out.println("<link rel=\"stylesheet\" href=\"css/estilo-admin.css\" type=\"text/css\"></link>");
 		out.println("<meta http-equiv=\"pragma\" content=\"no-cache\">");
 		out.println("<meta http-equiv=\"cache-control\" content=\"no-cache\">");
 		out.println("<meta http-equiv=\"expires\" content=\"0\">");
@@ -54,7 +55,7 @@ public class DefinitionBucket extends HttpServlet {
 		out.println("<meta http-equiv=\"description\" content=\"This is my page\">");
 		
 		out.println("<style type=\"text/css\">");
-		out.println("body{background: rgba(226,226,226,1);}");
+//		out.println("body{background: rgba(226,226,226,1);}");
 		out.println(".button {padding-left: 90px;}");
 		out.println("button {margin-left: .5em;}");
 		out.println("input:focus, textarea:focus {border-color: #000;}");
@@ -82,7 +83,23 @@ public class DefinitionBucket extends HttpServlet {
 		out.println("}");
 		out.println("</script>");
 		out.println("<body>");
-		out.println("<h1>Realizar busqueda por:</h1>");
+		
+		out.println("<div>");
+		out.println("<div id=\"loginhead\" style=\"height: 80px; width: 100%\">");
+		out.println("<div id=\"logotipos\" style=\"height: 80px;\">");
+		out.println("<table class=\"tabla\" style=\"width: 100%;\">");
+		out.println("<tr>");
+		out.println("<td>");
+		out.println("<img src=\"imagenes/BBVA_TAGLINE.png\" class=\"img1\" alt=\"BBVA\" height=\"50\" width=\"200\"/>");
+		out.println("</td>");
+		out.println("<td style=\"text-align: right;\">");
+		out.println("</td>");
+		out.println("</tr>");
+		out.println("</table>");			
+		out.println("</div>");
+		out.println("</div>");
+		out.println("</div>");
+		
 		out.println("<form id=\"form1\" action=\"\" method=\"post\">");
 		out.println("<select id=\"selectbucket\">");
 		out.println("<option value=\"-1\">Selecciona un bucket..</option>");
@@ -97,20 +114,6 @@ public class DefinitionBucket extends HttpServlet {
 			out.println("<input type=\"text\" id=\"" + data[i][0] + "\" name=\"" + data[i][0] + "\" />");
 			out.println("</div>");
 		}
-		
-//		out.println("<div>");
-//		out.println("<label for=\"name\">Numero Cliente:</label>");
-//		out.println("<input type=\"text\" id=\"numeroCliente\" name=\"numcliente\" />");
-//		out.println("</div>");
-//		out.println("<div>");
-//		out.println("<label for=\"mail\">Numero de Contrato:</label>");
-//		out.println("<input type=\"text\" id=\"numeroContrato\" name=\"numcontrato\" />");
-//		out.println("</div>");
-//		out.println("<div>");
-//		out.println("<label for=\"msg\">Fecha:</label>");
-//		out.println("<input type=\"text\" id=\"fecha\" name=\"fecha\" />");
-//		out.println("</div>");
-		
 		
 		out.println("<div class=\"button\">");
 		out.println("<input type=\"hidden\" value=\"\" id=\"params\">");

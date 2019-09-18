@@ -41,7 +41,6 @@
     <servlet-name>ConsultaAudios</servlet-name>
     <servlet-class>com.bbva.servlet.ConsultaAudios</servlet-class>
   </servlet>
-
   <servlet-mapping>
     <servlet-name>DefinitionBucket</servlet-name>
     <url-pattern>/DefinitionBucket</url-pattern>
@@ -49,5 +48,15 @@
   <servlet-mapping>
     <servlet-name>ConsultaAudios</servlet-name>
     <url-pattern>/servlet/ConsultaAudios</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ResultDocuments</display-name>
+    <servlet-name>ResultDocuments</servlet-name>
+    <servlet-class>com.bbva.servlet.ResultDocuments</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ResultDocuments</servlet-name>
+    <url-pattern>/ResultDocuments</url-pattern>
   </servlet-mapping>
 </web-app>

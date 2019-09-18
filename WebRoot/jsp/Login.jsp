@@ -74,8 +74,9 @@ input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgb
 		var user = document.getElementById("user").value;
 		var password = document.getElementById("password").value;
 		var aplicacion = "expunic";
-		//document.forms['form1'].action = "./jsp/Audios.jsp?user=" + user + "&password=" + password;
-		document.forms['form1'].action = "./DefinitionBucket?user=" + user + "&password=" + password + "&aplicacion=" + aplicacion;
+		document.forms['form1'].action = "./jsp/Principal.jsp?user=" + user + "&password=" + password + "&aplicacion=" + aplicacion;
+// 		document.forms['form1'].action = "./jsp/SearchAudios.jsp?user=" + user + "&password=" + password + "&aplicacion=" + aplicacion;
+// 		document.forms['form1'].action = "./DefinitionBucket?user=" + user + "&password=" + password + "&aplicacion=" + aplicacion;
 		document.forms['form1'].submit();
 	}
 </script>
