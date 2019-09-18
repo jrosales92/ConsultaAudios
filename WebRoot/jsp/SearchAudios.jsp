@@ -26,7 +26,7 @@ String[][] data = cm.getDefinicionBucket(aplicacion);
 
 <style type="text/css">
 /* 	body{background: rgba(226,226,226,1);} */
-/* 	.button {padding-left: 90px;} */
+	.button {padding-left: 90px;}
 /* 	button {margin-left: .5em;} */
 /* 	input:focus, textarea:focus {border-color: #000;} */
 /* 	input, textarea {font: 1em sans-serif;width: 300px; -moz-box-sizing: border-box;box-sizing: border-box;border: 2px solid #999;} */

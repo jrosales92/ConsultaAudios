@@ -19,8 +19,9 @@
 	/*background: url(../imagenes/fondo-encabezado.png)  repeat-x;*/
 }
 #logotipos {
-	/*background-color: #316BA2;*/
-	background: url(../imagenes/oie_transparent.png) no-repeat right top;
+	opacity: 0.90;
+	background-color: #243a51;
+	/*background: url(../imagenes/oie_transparent.png) no-repeat right top;*/
 }
 .pie {
 	color: #666666;

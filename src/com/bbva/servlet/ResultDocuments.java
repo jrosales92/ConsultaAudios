@@ -57,7 +57,7 @@ public class ResultDocuments extends HttpServlet {
 	
 			
 
-			tituloAplicacion = request.getParameter("t");
+			tituloAplicacion = request.getParameter("bucket");
 			System.out.println("tituloapp: " + tituloAplicacion);
 			String nc = request.getParameter("nc");
 			System.out.println("numeroCliente: " + nc);
@@ -97,7 +97,6 @@ public class ResultDocuments extends HttpServlet {
 			out.println("<table id=\"tablaDoc\"  width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" align=\"center\" class=\"tablaDatos\"");
 			out.println("<thead");
 			
-//			if("expunico".equalsIgnoreCase(tituloAplicacion)) {
 			out.println("	<tr id=\"encabezado\" height=\"35px\">");
 			out.println("		<th id=\"tit0\" width=\"15%\">");
 			out.println(""+data[1][1]+"");
@@ -108,7 +107,6 @@ public class ResultDocuments extends HttpServlet {
 			out.println("			Nombre de Cliente");
 			out.println("		</th>");
 			out.println("	</tr>");
-//			}
 			out.println("</thead>");
 			out.println("<tbody>");
 
@@ -123,45 +121,21 @@ public class ResultDocuments extends HttpServlet {
 				
 				out.println("<td>");
 				out.println("<strong>"+obj.getString("nc")+"</strong>");
-				out.println("<input type\"hidden\" id=\"cdAplicacion"+row+"\" value=\""+obj.getString("nc")+"\"/>");
+				out.println("<input type=\"hidden\" id=\"cdAplicacion"+row+"\" value=\""+obj.getString("nc")+"\"/>");
 				out.println("</td>");
 				
 				out.println("<td>");
 				out.println("<strong>"+obj.getString("ct")+"</strong>");
-				out.println("<input type\"hidden\" id=\"nbAplicacion"+row+"\" value=\""+obj.getString("ct")+"\"/>");
+				out.println("<input type=\"hidden\" id=\"nbAplicacion"+row+"\" value=\""+obj.getString("ct")+"\"/>");
 				out.println("</td>");
 				
 				out.println("</tr>");
-				
-//					out.println("<tr>");
-//					out.println("<td align=\"center\" style=\"font-weight:bold;\" width=\"15%\">");
-//					out.println("<a href=\"../HistoricoTree?Gabeton=" + hb.getIdGabinete() + "&Aplicacion=" + hb.getIdGaveta() + "&numcliente=" + hb.getNumCliente() + "&nomcliente=" + hb.getNomCliente() + "\" target=\"_top\">" + contador + "</a>");
-//					out.println("</td>");
-//					out.println("<td align=\"center\" width=\"25%\">");
-//					out.println("<a href=\"../HistoricoTree?Gabeton=" + hb.getIdGabinete() + "&Aplicacion=" + hb.getIdGaveta() + "&numcliente=" + hb.getNumCliente() + "&nomcliente=" + hb.getNomCliente() + "\" target=\"_top\">" + hb.getNumCliente() + "</a>");
-//					out.println("</td>");
-//					out.println("<td align=\"left\" width=\"60%\">");
-//					out.println("<a href=\"../HistoricoTree?Gabeton=" + hb.getIdGabinete() + "&Aplicacion=" + hb.getIdGaveta() + "&numcliente=" + hb.getNumCliente() + "&nomcliente=" + hb.getNomCliente() + "\" target=\"_top\">" + hb.getNomCliente() + "</a>");
-//					out.println("</td>");
-//					out.println("</tr>");
-				
-				
-//				<tr class="<%=((i % 2) == 0 ? "alternateRow" : "normalRow")%>">
-//				<td><strong><input type="checkbox" id="check<%=row%>" name="check" /></strong></td>
-//				<td>
-//					<strong><%=obj.getString("nc")%></strong>
-//					<input type="hidden" id="cdAplicacion<%=row%>" value="<%=obj.getString("nc")%>" />			
-//				</td>
-//				<td>
-//					<strong><%=obj.getString("ct")%></strong>
-//					<input type="hidden" id="nbAplicacion<%=row%>" value="<%=obj.getString("ct")%>" />
-//				</td>
-//				</tr>
+				row++;
 			}
 
 			out.println("</tbody>");
 			out.println("</table>");
-
+			out.println("<input type=\"hidden\" value=\""+row+"\" id=\"totalArch\">");
 		} finally {
 			if (out != null)
 				out.close();

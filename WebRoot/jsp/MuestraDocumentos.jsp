@@ -136,7 +136,7 @@ var ajax, jx;// global instance of XMLHttpRequest
 // 		soloesperarGeneral();
 		numPagina++;
 		createXmlHttpRequest();
-		var uu="../ResultDocuments?t=<%=tituloAplicacion.toUpperCase()%>&nc=<%=numCliente%>&ct=<%=numCliente%>";
+		var uu="../ResultDocuments?bucket=<%=tituloAplicacion%>&nc=<%=numCliente%>&ct=<%=nomCliente%>";
 <%-- 		var uu="../vistaHistorico?tituloAplicacion=<%=tituloAplicacion%>&numCliente=<%=numCliente%>&nomCliente=<%=nomCliente%>&descripcion=<%=descripcion%>&folio=<%=folio%>&numPagina="+numPagina+"&from=<%=fechaInicio%>&to=<%=fechaFin%>&metodo=<%=tipoBusqueda%>&rand="+Math.random(); --%>
 		ajax.open("GET",uu,true);
 		ajax.onreadystatechange=consulta;
@@ -274,6 +274,34 @@ var ajax, jx;// global instance of XMLHttpRequest
 			}
 		}
 	}
+	
+	function Generar(){
+		var cds = "";
+		var nbs = "";
+		var nombre = "";
+		var total = document.getElementById("totalArch").value;
+// 		alert(total);
+// 		alert(document.getElementById("cdAplicacion1").value);
+		for(i = 0; i < total; i++){
+			if(document.getElementById("check" + i).checked){
+				cds  = cds + document.getElementById("cdAplicacion" + i).value + "|";
+				nbs  = nbs + document.getElementById("nbAplicacion" + i).value + "|";
+			}
+		}
+// 		alert("aqui vengo " + cds + "  " + nbs)
+		if(cds != "" && nbs != ""){
+			location.href = "../DescargaBatch?cds=" + cds + "&nbs=" + nbs;
+		}
+	}
+	function marcar(sourse) {
+		checkboxes = document.getElementsByTagName('input'); //obtenemos todos los controles del tipo Input
+		for (i = 0; i < checkboxes.length; i++){ //recoremos todos los controles
+			if (checkboxes[i].type == "checkbox") //solo si es un checkbox entramos
+			{
+				checkboxes[i].checked = sourse.checked; //si es un checkbox le damos el valor del checkbox que lo llamó (Marcar/Desmarcar Todos)
+			}
+		}
+	}
 
 </script>
 	</head>
@@ -291,6 +319,8 @@ var ajax, jx;// global instance of XMLHttpRequest
 </div>   
 <div id="inferior">
 <div id="nn"></div>
+<input type="checkbox" value="Marcar" onclick="marcar(this);">Marcar Todos</input>
+<input type="button" value="Generar Batch" onclick="Generar();"></input>
 <div align="center"> <br>
 	<table cellpadding="0" cellspacing="0" border="0" >
 		<tr>
