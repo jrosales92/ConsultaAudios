@@ -57,7 +57,7 @@ function alCambiarBucket(){
 
 function alCargar(){
 	var optcon = document.getElementById("selectbucket").value = "<%=bucket%>";
-	optcon.focus();
+// 	optcon.focus();
 }
 </script>
 

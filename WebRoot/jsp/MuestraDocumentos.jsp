@@ -264,20 +264,26 @@ var ajax, jx;// global instance of XMLHttpRequest
 	}
 	
 	function Generar(){
-		var cds = "";
-		var nbs = "";
+		var jsonParam = "";
+		var checkeados = "";
 		var nombre = "";
 		var total = document.getElementById("totalArch").value;
+		var ar = document.getElementById("arrayValues").value;
 		for(i = 0; i < total; i++){
 			if(document.getElementById("check" + i).checked){
-				cds  = cds + document.getElementById("cdAplicacion" + i).value + "|";
-				nbs  = nbs + document.getElementById("nbAplicacion" + i).value + "|";
+				checkeados = checkeados + i + "|"
 			}
 		}
-		if(cds != "" && nbs != ""){
-			location.href = "../DescargaBatch?cds=" + cds + "&nbs=" + nbs;
+		
+		if(ar != "" && checkeados != ""){
+			location.href = "../DescargaBatch?param=" + ar + "&checking=" + checkeados;
+		}else{
+			alert("Debes seleccionar al menos 1 registro");
 		}
 	}
+	
+	
+	
 	function marcar(sourse) {
 		checkboxes = document.getElementsByTagName('input'); //obtenemos todos los controles del tipo Input
 		for (i = 0; i < checkboxes.length; i++){ //recoremos todos los controles
@@ -292,16 +298,18 @@ var ajax, jx;// global instance of XMLHttpRequest
 	</head>
 <body onload="javascript:inicializa();">
 <div id="interno"> 
- 	<table id="tablaDocEncabeza"  cellpadding="0" cellspacing="0" border="0" >  
+ 	<table id="tablaDocEncabeza" class="tablaDatos" width="100%" cellpadding="0" cellspacing="0" border="0" >  
  	  <thead>	
  		<tr height="35px">
 			<th id="titVista0" >&nbsp;Registro</th>
  		<%
+ 		int o = 1;
  		for(int i=0; i< data.length; i++){
  			if(!"t".equalsIgnoreCase(data[i][0])){
 		%>
-			<th id="titVista1">&nbsp;<%=data[i][1]%></th>
+			<th id="titVista<%=o%>">&nbsp;<%=data[i][1]%></th>
 		<%
+				o++;
 			}
 		}
  		%>
