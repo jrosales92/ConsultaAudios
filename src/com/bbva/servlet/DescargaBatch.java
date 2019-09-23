@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.JSONObject;
+import org.json.JSONArray;
 
 public class DescargaBatch extends HttpServlet{
 
@@ -25,16 +25,14 @@ public class DescargaBatch extends HttpServlet{
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response){
 		BufferedWriter bw = null;
-		JSONObject json = null;
 		File file = null;
-		StringBuffer xml = new StringBuffer();
 		String pathTemporal = getServletContext().getRealPath("/") + File.separator + "upload" + File.separator;
-		String cds_aplicacion = request.getParameter("cds");
-		String nbs_aplicacion = request.getParameter("nbs");
-		System.out.println(pathTemporal);
-		String[] cds = cds_aplicacion.split("\\|");
-		String[] nbs = nbs_aplicacion.split("\\|");
 		
+		String param = request.getParameter("param");
+		String checking = request.getParameter("checking");
+		
+		JSONArray array = new JSONArray(param);
+		String[] checks = checking.split("\\|");
 		
 		try {
 			file = new File(pathTemporal + "monitor_audios_Batch.txt");
@@ -44,11 +42,8 @@ public class DescargaBatch extends HttpServlet{
 
 			FileWriter fw = new FileWriter(file);
 			bw = new BufferedWriter(fw);
-			for (int i = 0; i < cds.length; i++) {
-				json = new JSONObject();
-				json.put("cd_aplicacion", cds[i].toString());
-				json.put("nb_aplicacion", nbs[i].toString());
-				bw.write(json.toString());
+			for (int i = 0; i < checks.length; i++) {
+				bw.write(array.getJSONObject(i).toString());
 				bw.newLine();
 			}
 			bw.close();

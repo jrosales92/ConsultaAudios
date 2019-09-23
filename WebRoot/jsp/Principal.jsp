@@ -93,7 +93,7 @@ String aplicacion = request.getParameter("aplicacion");
 		</div>
 	</div>
 	<div id="derecho2sup" align="center">
-		<iframe id="framePrincipal" src="SearchAudios.jsp?aplicacion=<%=aplicacion%>" name="framePrincipal" marginwidth="0" marginheight="0" frameborder="0" height="99%" width="100%" ></iframe>
+		<iframe id="framePrincipal" src="SearchAudios.jsp?bucket=<%=aplicacion%>" name="framePrincipal" marginwidth="0" marginheight="0" frameborder="0" height="99%" width="100%" ></iframe>
     </div>
     <div id="central" align="center" >
     	<img src="../imagenes/barraSeparadora.png" align="left" width="88" height="5" border="0" usemap="#Map" />

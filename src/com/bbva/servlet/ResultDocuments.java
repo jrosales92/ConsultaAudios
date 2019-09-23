@@ -53,21 +53,15 @@ public class ResultDocuments extends HttpServlet {
 				return;
 			}
 			
-			String tituloAplicacion = null;
-	
-			
-
-			tituloAplicacion = request.getParameter("bucket");
-			System.out.println("tituloapp: " + tituloAplicacion);
+			String bucket = request.getParameter("bucket");
+			System.out.println("bucket: " + bucket);
 			String nc = request.getParameter("nc");
 			System.out.println("numeroCliente: " + nc);
 			String ct = request.getParameter("ct");
 			System.out.println("numeroContrato: " + ct);
 			
-			String bucket = request.getParameter("bucket");
 			ConsultaManager cm = new ConsultaManager();
 			String[][] data = cm.getDefinicionBucket(bucket);
-			String input = "";
 			JSONObject search = new JSONObject();
 			JSONObject filtros = new JSONObject();
 			for (int i = 0; i < data.length; i++) {
@@ -75,7 +69,6 @@ public class ResultDocuments extends HttpServlet {
 			}
 			search.put("must", filtros);
 //		 	String input = "{\"must\":{\"t\": \"EXPUNICO\", \"nc\": \"D0176518\", \"ct\": \"007453460000000040\"}}";
-
 			//EJEMPLO DE ENDPOINT http://150.100.22.50:9090/v3/_search/expunic/expunic
 			//EJEMPLO DE ENDPOINT http://150.100.22.50:9090/v3/_search/verint/verint
 			String endPointArchiving = "http://150.100.22.50:9090/v3/_search/" + bucket + "/" + bucket;
@@ -96,46 +89,53 @@ public class ResultDocuments extends HttpServlet {
 
 			out.println("<table id=\"tablaDoc\"  width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" align=\"center\" class=\"tablaDatos\"");
 			out.println("<thead");
-			
 			out.println("	<tr id=\"encabezado\" height=\"35px\">");
+			
 			out.println("		<th id=\"tit0\" width=\"15%\">");
 			out.println(""+data[1][1]+"");
 			out.println("		</th>");
 			out.println("		<th id=\"tit1\" width=\"25%\">");
 			out.println(""+data[1][1]+"");
 			out.println("		<th id=\"tit2\" width=\"60%\">");
-			out.println("			Nombre de Cliente");
+			out.println(""+data[1][1]+"");
 			out.println("		</th>");
+			
 			out.println("	</tr>");
 			out.println("</thead>");
 			out.println("<tbody>");
 
 			int row = 0;
+			String antData = "";
+			JSONArray arrayTest = new JSONArray();
+			JSONObject jsonTest = new JSONObject();
 			for (int i = 0; i < geodata.length(); i++) {
 				JSONObject obj = (JSONObject) geodata.getJSONObject(i);
+				System.out.println("json linea "+ obj.toString());
 				
 				out.println("<tr class=\""+((i % 2) == 0 ? "alternateRow" : "normalRow")+"\">");
 				out.println("<td align=\"center\" style=\"font-weight:bold;\" width=\"15%\">");
 				out.println("<strong><input type=\"checkbox\" id=\"check"+row+"\" name=\"check\"/></strong>");
 				out.println("</td>");
-				
-				out.println("<td>");
-				out.println("<strong>"+obj.getString("nc")+"</strong>");
-				out.println("<input type=\"hidden\" id=\"cdAplicacion"+row+"\" value=\""+obj.getString("nc")+"\"/>");
-				out.println("</td>");
-				
-				out.println("<td>");
-				out.println("<strong>"+obj.getString("ct")+"</strong>");
-				out.println("<input type=\"hidden\" id=\"nbAplicacion"+row+"\" value=\""+obj.getString("ct")+"\"/>");
-				out.println("</td>");
-				
+				for (int k = 0; k < data.length; k++) {
+					if(!"t".equalsIgnoreCase(data[k][0]) && !antData.equalsIgnoreCase(data[k][0])){
+						out.println("<td>");
+						out.println("<strong>"+obj.getString(data[k][0])+"</strong>");
+						out.println("<input type=\"hidden\" id=\""+data[k][0]+""+row+"\" value=\""+obj.getString(data[k][0])+"\"/>");
+						out.println("</td>");					
+						antData = data[k][0];
+						jsonTest.put(data[k][0], obj.getString(data[k][0]));
+					}
+				}
 				out.println("</tr>");
 				row++;
+				arrayTest.put(jsonTest);
 			}
 
+			System.out.println("arrayTest " + arrayTest);
 			out.println("</tbody>");
 			out.println("</table>");
 			out.println("<input type=\"hidden\" value=\""+row+"\" id=\"totalArch\">");
+			out.println("<input type=\"hidden\" value="+String.valueOf(arrayTest)+" id=\"arrayValues\">");
 		} finally {
 			if (out != null)
 				out.close();
