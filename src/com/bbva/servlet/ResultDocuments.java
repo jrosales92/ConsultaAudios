@@ -65,7 +65,8 @@ public class ResultDocuments extends HttpServlet {
 			JSONObject search = new JSONObject();
 			JSONObject filtros = new JSONObject();
 			for (int i = 0; i < data.length; i++) {
-				filtros.put(data[i][0], request.getParameter(data[i][0]));
+				if(!"".equalsIgnoreCase(request.getParameter(data[i][0])))
+					filtros.put(data[i][0], request.getParameter(data[i][0]));
 			}
 			search.put("must", filtros);
 //		 	String input = "{\"must\":{\"t\": \"EXPUNICO\", \"nc\": \"D0176518\", \"ct\": \"007453460000000040\"}}";
