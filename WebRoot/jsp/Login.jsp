@@ -82,9 +82,13 @@ input:focus { }
 	
 </script>
 <body>
-<img top= 200px, width= 1450px, height= 485px src="./Imagenes/Img1.jpg" > 
+<div id="loginhead" style="height: 80px; width: 100%">
+<div id="logotipos" style="height: 80px;">
+			<img src="../imagenes/BBVA_TAGLINE.png" class="./img1" alt="Login" height="50" width="200"/>
+		</div>
+	</div>
 	<div class="login">
-	    <h1>BBVA</h1>
+	    <h1>Consultas Audios</h1>
 	    <form id="form1" method="post">
 	        <input type="text" id="user" name="u" placeholder="Usuario" required="required" />
 	        <input type="password" id="password" name="p" placeholder="Contraseña" required="required" />
