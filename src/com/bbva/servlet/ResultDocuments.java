@@ -97,7 +97,7 @@ public class ResultDocuments extends HttpServlet {
 			out.println("		</th>");
 			out.println("		<th id=\"tit1\" width=\"25%\">");
 			out.println(""+data[1][1]+"");
-			out.println("		<th id=\"tit2\" width=\"60%\">");
+			out.println("		<th id=\"tit2\" width=\"20%\">");
 			out.println(""+data[1][1]+"");
 			out.println("		</th>");
 			

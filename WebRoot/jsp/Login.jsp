@@ -1,4 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<link rel="stylesheet" href="../css/estilo-admin.css" type="text/css"></link>
+
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -29,6 +31,7 @@ body {
     height:100%;
     font-family: 'Open Sans', sans-serif;
     background: White;
+   
 /*     background: -moz-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%),-moz-linear-gradient(top,  rgba(57,173,219,.25) 0%, rgba(42,60,87,.4) 100%), -moz-linear-gradient(-45deg,  #670d10 0%, #092756 100%); */
 /*     background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%), -webkit-linear-gradient(top,  rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), -webkit-linear-gradient(-45deg,  #670d10 0%,#092756 100%); */
 /*     background: -o-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%), -o-linear-gradient(top,  rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), -o-linear-gradient(-45deg,  #670d10 0%,#092756 100%); */
@@ -80,15 +83,13 @@ input:focus { }
 	
 </script>
 <body>
-<<<<<<< HEAD
+
+<!-- <img top= 200px, width= 1450px, height= 485px src="./imagenes/logo.jpg" >  -->
 <div id="loginhead" style="height: 80px; width: 100%">
 <div id="logotipos" style="height: 80px;">
-			<img src="../imagenes/BBVA_TAGLINE.png" class="./img1" alt="Login" height="50" width="200"/>
+			<img src="./imagenes/BBVA_TAGLINE.png" class="img1" alt="Login" height="50" width="200"/>
 		</div>
 	</div>
-=======
-<img top= 200px, width= 1450px, height= 485px src="./imagenes/logo.jpg" > 
->>>>>>> 287f6585923fcd103ac50b090a53e5dba230a3c2
 	<div class="login">
 	    <h1>Consultas Audios</h1>
 	    <form id="form1" method="post">

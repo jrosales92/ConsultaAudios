@@ -42,6 +42,7 @@ System.out.println("Mis parametros son: " +params);
 	font-size: 12pts;
 	color: #023f9b;
 	cursor: hand;
+	
 }	 
 </style>
 		<link rel="stylesheet" href="../css/esperaModal.css">
@@ -120,7 +121,7 @@ var ajax, jx;// global instance of XMLHttpRequest
 
 	function inicializa(){
 // 		blockButtonBuscar(true);
-// 		soloesperarGeneral();
+		soloesperarGeneral();
 		numPagina++;
 		createXmlHttpRequest();
 			var uu="../ResultDocuments?bucket=<%=bucket%>&<%=params%>";
@@ -204,13 +205,13 @@ var ajax, jx;// global instance of XMLHttpRequest
 					}else{
 						if(aux==-3){
 							alert("Error de comunicacion");
-// 							remove_soloesperarGeneral();
+							remove_soloesperarGeneral();
 // 							blockButtonBuscar(false);
 						}else{
 							numRegistros=aux
 							if(aux == -4){
 								alert("La busqueda es muy grande favor de delimitarla");
-// 								remove_soloesperarGeneral();
+								remove_soloesperarGeneral();
 // 								blockButtonBuscar(false);
 							}else{
 								aux=salida.substring(fin+10);
@@ -219,7 +220,7 @@ var ajax, jx;// global instance of XMLHttpRequest
 								dimencionaWin();
 	 							scrollInfe();
 	 							dimencionaInfer();
-// 	 							remove_soloesperarGeneral();
+	 							remove_soloesperarGeneral();
 // 	 							blockButtonBuscar(false);
 	 						}
 						}
@@ -307,7 +308,7 @@ var ajax, jx;// global instance of XMLHttpRequest
  		for(int i=0; i< data.length; i++){
  			if(!"t".equalsIgnoreCase(data[i][0])){
 		%>
-			<th id="titVista<%=o%>">&nbsp;<%=data[i][1]%></th>
+			<th width="34%" id="titVista<%=o%>">&nbsp;<%=data[i][1]%></th>
 		<%
 				o++;
 			}
@@ -319,7 +320,7 @@ var ajax, jx;// global instance of XMLHttpRequest
  	  </thead>		
    </table>
 </div>   
-<div id="inferior">
+<div align="right"  id="inferior">
 <div id="nn"></div>
 <input type="checkbox" value="Marcar" onclick="marcar(this);">Marcar Todos</input>
 <input type="button" value="Generar Batch" onclick="Generar();"></input>

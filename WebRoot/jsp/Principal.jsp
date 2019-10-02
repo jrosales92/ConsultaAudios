@@ -96,7 +96,7 @@ String aplicacion = request.getParameter("aplicacion");
 		<iframe id="framePrincipal" src="SearchAudios.jsp?bucket=<%=aplicacion%>" name="framePrincipal" marginwidth="0" marginheight="0" frameborder="0" height="99%" width="100%" ></iframe>
     </div>
     <div id="central" align="center" >
-    	<img src="../imagenes/barraSeparadora.png" align="left" width="88" height="5" border="0" usemap="#Map" />
+    	<img src="../imagenes/barraSeparadora.png" align="center" width="88" height="5" border="0" usemap="#Map" />
     </div>
 	<div id="derecho2infe" align="center" >
 		<iframe id="frameResultados" src="" name="frameResultados" marginwidth="0" marginheight="0" frameborder="0" height="100%" width="100%" ></iframe>

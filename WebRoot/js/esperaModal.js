@@ -172,8 +172,10 @@ function soloesperar(imgLoad){
 }
 
 function soloesperarGeneral(){
+	alert("Entrando a soloEsperar");
 	imgLoader = new Image();
-	imgLoader.src = "../images/spinner.gif";
+	imgLoader.src = "../Imagenes/loading.gif";
+	
 	if (document.getElementById("frmEspera2") === null){
 		$("body").append("<div id=\"divImgLoad2\" style=\" width: 100%; height: 100%; background: #FFF; position: absolute; z-index: 2; font-size: 9px\"><div style=\"width: 100%; position: absolute; top: 30%;  text-align: center;\"><img src = '../images/loading.gif'/><br>Cargando</div></div>");
 //		$("body").append("<img style='position: absolute;' src = '../images/loading.gif' />");
@@ -193,7 +195,7 @@ function soloesperarGeneral(){
 
 function soloesperarDocumentos(){
 	imgLoader = new Image();
-	imgLoader.src = "../images/spinner.gif";
+	imgLoader.src = "../Imagenes/loading.gif";
 	if (document.getElementById("frmEspera2") === null){
 		
 		$("body").append("<div id=\"inferior\" style=\" width: 100%; height: 100%; background: #FFF; position: absolute; z-index: 2; font-size: 9px\"><div style=\"width: 100%; position: absolute; top: 30%;  text-align: center;\"><img src = '../images/loading.gif'/><br>Cargando</div></div>");
