@@ -80,17 +80,19 @@ function alCargar(){
 					for (int i = 0; i < data.length; i++) {
 				%>
 				<%
-					if (i <= 5) {
+					if (i == 5) {
 				%>
 			
 			<tr>
-				<%
+				<td align="left"><label style="color:#243a51" for="name"><%=data[i][1]%></label></td>
+				<td><input type="text" id="<%=data[i][0]%>"name="<%=data[i][0]%>" /></td>
+				<%	
 					} else {
 				%>
 				<td align="left"><label style="color:#243a51" for="name"><%=data[i][1]%></label></td>
 				<td><input type="text" id="<%=data[i][0]%>"name="<%=data[i][0]%>" /></td>
 				<%
-					if (i <= 5) {
+					if (i == 5) {
 								j++;
 				%>
 			</tr>
