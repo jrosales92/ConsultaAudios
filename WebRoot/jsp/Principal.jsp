@@ -88,7 +88,7 @@ String aplicacion = request.getParameter("aplicacion");
 <body >
 	<div id="loginhead" style="height: 80px; width: 100%">
 		<div id="logotipos" style="height: 80px;">
-			<img src="../imagenes/BBVA_TAGLINE.png" class="img1" alt="Monitor Batch" height="50" width="200"/>
+			<img src="../Imagenes/BBVA_TAGLINE.png" class="img1" alt="Monitor Batch" height="50" width="200"/>
 
 		</div>
 	</div>
@@ -96,7 +96,7 @@ String aplicacion = request.getParameter("aplicacion");
 		<iframe id="framePrincipal" src="SearchAudios.jsp?bucket=<%=aplicacion%>" name="framePrincipal" marginwidth="0" marginheight="0" frameborder="0" height="99%" width="100%" ></iframe>
     </div>
     <div id="central" align="center" >
-    	<img src="../imagenes/barraSeparadora.png" align="center" width="88" height="5" border="0" usemap="#Map" />
+    	<img src="../Imagenes/barraSeparadora.png" align="center" width="88" height="5" border="0" usemap="#Map" />
     </div>
 	<div id="derecho2infe" align="center" >
 		<iframe id="frameResultados" src="" name="frameResultados" marginwidth="0" marginheight="0" frameborder="0" height="100%" width="100%" ></iframe>

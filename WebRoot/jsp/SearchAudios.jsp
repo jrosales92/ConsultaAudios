@@ -70,21 +70,36 @@ function alCargar(){
 			<option value="0">Selecciona un bucket..</option>
 			<option value="expunic">expunic</option>
 			<option value="verint">verint</option>
-			<option value="bucketfroy">bucketfroy</option>
+<!-- 			<option value="bucketfroy">bucketfroy</option> -->
 		</select>
-		<table id="tableExpunico" width="100%" border="0px" cellpadding="0" cellspacing="0" >
-			<%for (int i = 0; i < data.length; i++) {%>
+		<table id="tableExpunico" width="100%" border="0px" cellpadding="0"
+			cellspacing="0">
+			<tr>
+				<%
+					int j = 0;
+					for (int i = 0; i < data.length; i++) {
+				%>
+				<%
+					if (i <= 5) {
+				%>
 			
-			<td align="right">
-				<label style="color:#243a51" for="name"><%=data[i][1]%></label>
-			</td>
-			<td>
-				<input type="text" id="<%=data[i][0]%>" name="<%=data[i][0]%>" />
-			</td>
-			
+			<tr>
+				<%
+					} else {
+				%>
+				<td align="left"><label style="color:#243a51" for="name"><%=data[i][1]%></label></td>
+				<td><input type="text" id="<%=data[i][0]%>"name="<%=data[i][0]%>" /></td>
+				<%
+					if (i <= 5) {
+								j++;
+				%>
+			</tr>
 			<%}%>
+			<%}%>
+			<%}%>
+			</tr>
 		</table>
-		
+
 		<div align="center" class="button">
 			<input type="hidden" value="" id="params"> 
 			<button id="Boton1" type="submit" onclick="Consulta();">Consultar</button> <input id="Boton2" type="reset" value="Borrar información"> 
