@@ -84,10 +84,10 @@ input:focus { }
 </script>
 <body>
 
-<!-- <img top= 200px, width= 1450px, height= 485px src="./imagenes/logo.jpg" >  -->
+<!-- <img top= 200px, width= 1450px, height= 485px src="./Imagenes/logo.jpg" >  -->
 <div id="loginhead" style="height: 80px; width: 100%">
 <div id="logotipos" style="height: 80px;">
-			<img src="./imagenes/BBVA_TAGLINE.png" class="img1" alt="Login" height="50" width="200"/>
+			<img src="./Imagenes/BBVA_TAGLINE.png" class="img1" alt="Login" height="50" width="200"/>
 		</div>
 	</div>
 	<div class="login">
