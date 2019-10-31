@@ -87,24 +87,22 @@ public class ResultDocuments extends HttpServlet {
 			JSONArray geodata = json.getJSONArray("result");
 
 			out.println("<codigo>" + geodata.length() + "</codigo>)");
+			
+			float percent  = (100 / (data.length+1));
 
 			out.println("<table id=\"tablaDoc\"  width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" align=\"center\" class=\"tablaDatos\"");
 			out.println("<thead");
 			out.println("	<tr id=\"encabezado\" height=\"35px\">");
-			
-			out.println("		<th id=\"tit0\" width=\"15%\">");
-			out.println(""+data[1][1]+"");
-			out.println("		</th>");
-			out.println("		<th id=\"tit1\" width=\"25%\">");
-			out.println(""+data[1][1]+"");
-			out.println("		<th id=\"tit2\" width=\"20%\">");
-			out.println(""+data[1][1]+"");
-			out.println("		</th>");
-			
+			out.println("		<th id=\"tit0\" width=\""+percent+"%\">Registro</th>");
+			int h = 1;
+			for (int k = 0; k < data.length; k++) {
+				out.println("		<th id=\"tit"+h+"\" width=\""+percent+"%\">"+data[k][1]+"</th>");
+				h++;
+			}
 			out.println("	</tr>");
 			out.println("</thead>");
+			
 			out.println("<tbody>");
-
 			int row = 0;
 			String antData = "";
 			JSONArray arrayTest = new JSONArray();
@@ -114,17 +112,18 @@ public class ResultDocuments extends HttpServlet {
 				System.out.println("json linea "+ obj.toString());
 				
 				out.println("<tr class=\""+((i % 2) == 0 ? "alternateRow" : "normalRow")+"\">");
-				out.println("<td align=\"center\" style=\"font-weight:bold;\" width=\"15%\">");
+				out.println("<td align=\"center\" style=\"font-weight:bold;\" width=\""+percent+"%\">");
 				out.println("<strong><input type=\"checkbox\" id=\"check"+row+"\" name=\"check\"/></strong>");
 				out.println("</td>");
 				for (int k = 0; k < data.length; k++) {
 					if(!"t".equalsIgnoreCase(data[k][0]) && !antData.equalsIgnoreCase(data[k][0])){
-						out.println("<td>");
-						out.println("<strong>"+obj.getString(data[k][0])+"</strong>");
-						out.println("<input type=\"hidden\" id=\""+data[k][0]+""+row+"\" value=\""+obj.getString(data[k][0])+"\"/>");
+						out.println("<td width=\""+percent+"%\">");
+						String val = (obj.isNull(data[k][0])==true) ? "NULL" : obj.getString(data[k][0]);
+						out.println("<strong>"+val+"</strong>");
+						out.println("<input type=\"hidden\" id=\""+data[k][0]+""+row+"\" value=\""+val+"\"/>");
 						out.println("</td>");					
 						antData = data[k][0];
-						jsonTest.put(data[k][0], obj.getString(data[k][0]));
+						jsonTest.put(data[k][0], val);
 					}
 				}
 				out.println("</tr>");
@@ -132,7 +131,6 @@ public class ResultDocuments extends HttpServlet {
 				arrayTest.put(jsonTest);
 			}
 
-			System.out.println("arrayTest " + arrayTest);
 			out.println("</tbody>");
 			out.println("</table>");
 			out.println("<input type=\"hidden\" value=\""+row+"\" id=\"totalArch\">");

@@ -45,8 +45,8 @@ System.out.println("Mis parametros son: " +params);
 	
 }	 
 </style>
-		<link rel="stylesheet" href="../css/esperaModal.css">
-		<script type="text/javascript" src="../js/esperaModal.js"></script>
+<link rel="stylesheet" href="../css/esperaModal.css">
+<script type="text/javascript" src="../js/esperaModal.js"></script>
 <script type="text/javascript" src="../js/jquery-1.2.6.min.js"></script> 
 <script language="javascript" type="text/javascript"> 
 
@@ -305,17 +305,16 @@ var ajax, jx;// global instance of XMLHttpRequest
 			<th id="titVista0" >&nbsp;Registro</th>
  		<%
  		int o = 1;
+ 		float percent  = (100 / (data.length+1));
  		for(int i=0; i< data.length; i++){
  			if(!"t".equalsIgnoreCase(data[i][0])){
 		%>
-			<th width="34%" id="titVista<%=o%>">&nbsp;<%=data[i][1]%></th>
+			<th id="titVista<%=o%>" width="<%=percent%>%">&nbsp;<%=data[i][1]%></th>
 		<%
 				o++;
 			}
 		}
  		%>
-<!-- 			<th id="titVista1" >&nbsp;Numero de Cliente;</th> -->
-<!-- 			<th id="titVista2" >&nbsp;Contrato&nbsp;</th>			 -->
 		</tr>
  	  </thead>		
    </table>
@@ -326,7 +325,7 @@ var ajax, jx;// global instance of XMLHttpRequest
 <input type="button" value="Generar Batch" onclick="Generar();"></input>
 <div align="center"> <br>
 	<table cellpadding="0" cellspacing="0" border="0" >
-		<tr>
+	 	<tr>
 		<td align="right">
 			<input type="button" onclick="javascript:PaginaAnterior();" class="boton" value="Anterior">
 			<input type="button" onclick="javascript:PaginaSiguiente();" class="boton" value="Siguiente">
