@@ -72,7 +72,6 @@ td {
 			<option value="0">Selecciona un bucket..</option>
 			<option value="expunic">expunic</option>
 			<option value="verint">verint</option>
-<<<<<<< HEAD
 		</select>
 		<table id="tableExpunico" width="100%" border="0px" cellpadding="0" cellspacing="0">
 			<tr>
@@ -91,37 +90,6 @@ td {
 					<%}%>	
 				<%}%>	
 			<%}%>
-=======
-<!-- 			<option value="bucketfroy">bucketfroy</option> -->
-		</select>
-		<table id="tableExpunico" width="100%" border="0px" cellpadding="0"
-			cellspacing="0">
-			<tr>
-				<%
-					int j = 0;
-					for (int i = 0; i < data.length; i++) {
-				%>
-				<%
-					if (i == 5) {
-				%>
-			
-			<tr>
-				<td align="left"><label style="color:#243a51" for="name"><%=data[i][1]%></label></td>
-				<td><input type="text" id="<%=data[i][0]%>"name="<%=data[i][0]%>" /></td>
-				<%	
-					} else {
-				%>
-				<td align="left"><label style="color:#243a51" for="name"><%=data[i][1]%></label></td>
-				<td><input type="text" id="<%=data[i][0]%>"name="<%=data[i][0]%>" /></td>
-				<%
-					if (i == 5) {
-								j++;
-				%>
-			</tr>
-			<%}%>
-			<%}%>
-			<%}%>
->>>>>>> 59283f55606744ac4bee0984c59c4b1725ba8d03
 			</tr>
 		</table>
 

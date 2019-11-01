@@ -309,11 +309,7 @@ var ajax, jx;// global instance of XMLHttpRequest
  		for(int i=0; i< data.length; i++){
  			if(!"t".equalsIgnoreCase(data[i][0])){
 		%>
-<<<<<<< HEAD
 			<th id="titVista<%=o%>" width="<%=percent%>%">&nbsp;<%=data[i][1]%></th>
-=======
-			<th width="35%" id="titVista<%=o%>">&nbsp;<%=data[i][1]%></th>
->>>>>>> 59283f55606744ac4bee0984c59c4b1725ba8d03
 		<%
 				o++;
 			}

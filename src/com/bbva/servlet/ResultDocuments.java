@@ -93,25 +93,12 @@ public class ResultDocuments extends HttpServlet {
 			out.println("<table id=\"tablaDoc\"  width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" align=\"center\" class=\"tablaDatos\"");
 			out.println("<thead");
 			out.println("	<tr id=\"encabezado\" height=\"35px\">");
-<<<<<<< HEAD
 			out.println("		<th id=\"tit0\" width=\""+percent+"%\">Registro</th>");
 			int h = 1;
 			for (int k = 0; k < data.length; k++) {
 				out.println("		<th id=\"tit"+h+"\" width=\""+percent+"%\">"+data[k][1]+"</th>");
 				h++;
 			}
-=======
-			
-			out.println("		<th id=\"tit0\" width=\"15%\">");
-			out.println(""+data[1][1]+"");
-			out.println("		</th>");
-			out.println("		<th id=\"tit1\" width=\"25%\">");
-			out.println(""+data[1][1]+"");
-			out.println("		<th id=\"tit2\" width=\"25%\">");
-			out.println(""+data[1][1]+"");
-			out.println("		</th>");
-			
->>>>>>> 59283f55606744ac4bee0984c59c4b1725ba8d03
 			out.println("	</tr>");
 			out.println("</thead>");
 			

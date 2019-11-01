@@ -172,20 +172,11 @@ function soloesperar(imgLoad){
 }
 
 function soloesperarGeneral(){
-<<<<<<< HEAD
-=======
-//	alert("Entrando a soloEsperar");
->>>>>>> 59283f55606744ac4bee0984c59c4b1725ba8d03
 	imgLoader = new Image();
 	imgLoader.src = "../imagenes/loading.gif";
 	
 	if (document.getElementById("frmEspera2") === null){
-<<<<<<< HEAD
 		$("body").append("<div id=\"divImgLoad2\" style=\" width: 100%; height: 100%; background: #FFF; position: absolute; z-index: 2; font-size: 9px\"><div style=\"width: 100%; position: absolute; top: 30%;  text-align: center;\"><img src = '../imagenes/loading.gif'/><br>Cargando</div></div>");
-=======
-		$("body").append("<div id=\"divImgLoad2\" style=\" width: 100%; height: 100%; background: #FFF; position: absolute; z-index: 2; font-size: 9px\"><div style=\"width: 100%; position: absolute; top: 30%;  text-align: center;\"><img src = '../Images/loading.gif'><br>Cargando</div></div>");
-//		$("body").append("<img style='position: absolute;' src = '../Images/loading.gif' />");
->>>>>>> 59283f55606744ac4bee0984c59c4b1725ba8d03
 		$("body").css("cursor","wait");
 		
 		var sInf = $("body");
@@ -205,13 +196,8 @@ function soloesperarDocumentos(){
 	imgLoader.src = "../imagenes/loading.gif";
 	if (document.getElementById("frmEspera2") === null){
 		
-<<<<<<< HEAD
 		$("body").append("<div id=\"inferior\" style=\" width: 100%; height: 100%; background: #FFF; position: absolute; z-index: 2; font-size: 9px\"><div style=\"width: 100%; position: absolute; top: 30%;  text-align: center;\"><img src = '../imagenes/loading.gif'/><br>Cargando</div></div>");
 //		$("body").append("<img style='position: absolute;' src = '../images/loading.gif' />");
-=======
-		$("body").append("<div id=\"inferior\" style=\" width: 100%; height: 100%; background: #FFF; position: absolute; z-index: 2; font-size: 9px\"><div style=\"width: 100%; position: absolute; top: 30%;  text-align: center;\"><img src = '../Images/loading.gif'><br>Cargando</div></div>");
-//		$("body").append("<img style='position: absolute;' src = '../Images/loading.gif' />");
->>>>>>> 59283f55606744ac4bee0984c59c4b1725ba8d03
 		$("body").css("cursor","wait");
 		
 		var sInf = $("body");
